@@ -1,895 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speakers: Sound Technology Explained</title>
-    <meta name="description" content="An explanation of speakers, their parts, and different types, using embedded HTML, CSS, and JavaScript.">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔊%3C/text%3E%3C/svg%3E">
-    
-    <style>
-        /* --- Base Reset and Variables --- */
-        :root {
-            --color-light-bg: #e6eef5; /* Light blue/grey background for contrast */
-            --color-light-text: #1a1a2e;
-            --color-light-card: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
-            --color-light-border: rgba(0, 255, 255, 0.3); /* Cyan border accent */
-            --color-cyan-accent: #00ffff; /* The glowing accent color */
-            --color-shadow: rgba(0, 0, 0, 0.15);
-            --glass-blur: 15px; /* Increased blur for more liquid look */
-            --glass-bg-light: rgba(255, 255, 255, 0.35); /* Base glass background */
-            --glass-card-shadow: 0 8px 32px 0 rgba(0, 255, 255, 0.1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Aashraa 💖</title>
 
-        /* Dark Mode Variables */
-        body.dark-mode {
-            --color-light-bg: #111827; /* Darker background */
-            --color-light-text: #e0e0e0;
-            --color-light-card: rgba(46, 53, 88, 0.5); /* Semi-transparent dark blue */
-            --color-light-border: rgba(0, 255, 255, 0.5); /* Brighter cyan border */
-            --color-shadow: rgba(0, 0, 0, 0.7);
-            --glass-bg-light: rgba(46, 53, 88, 0.45);
-            --glass-card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-        }
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', cursive;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    text-align: center;
+    overflow: hidden;
+    color: white;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+.container {
+    margin-top: 10%;
+    animation: fadeIn 2s ease-in;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--color-light-text);
-            background: var(--color-light-bg);
-            transition: background-color 0.5s, color 0.5s;
-            scroll-behavior: smooth;
-        }
+h1 {
+    font-size: 55px;
+    animation: bounce 2s infinite;
+}
 
-        a {
-            color: var(--color-cyan-accent);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+h2 {
+    font-size: 22px;
+    margin-top: -10px;
+}
 
-        a:hover {
-            color: #00e6e6; /* Slightly darker cyan for hover */
-        }
+p {
+    font-size: 20px;
+    width: 70%;
+    margin: auto;
+    min-height: 60px;
+}
 
-        /* --- Global Layout and Typography --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
+button {
+    margin-top: 25px;
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4b91;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-        header, footer {
-            background-color: var(--color-light-card);
-            padding: 1rem 0;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--color-light-border);
-            box-shadow: 0 4px 6px var(--color-shadow);
-        }
-        
-        /* Cyan Glowing Accent for Headings */
-        h1, h2, h3 {
-            color: var(--color-light-text);
-            margin-bottom: 0.8rem;
-            /* Enhanced glow effect */
-            text-shadow: 0 0 8px var(--color-cyan-accent), 0 0 15px rgba(0, 255, 255, 0.6);
-        }
+button:hover {
+    background: #ff4b91;
+    color: white;
+}
 
-        h2 {
-            font-size: 2rem;
-            padding-top: 1.5rem;
-        }
-        
-        p {
-            margin-bottom: 1rem;
-        }
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
 
-        /* --- Header and Navigation --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--color-light-text);
-            text-shadow: 0 0 8px var(--color-cyan-accent);
-        }
+.heart {
+    position: fixed;
+    color: #ff4b91;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-        
-        /* Dark Mode Toggle Switch Styling - Liquid glass button */
-        .theme-switch {
-            display: inline-block;
-            height: 24px;
-            position: relative;
-            width: 48px;
-        }
-
-        .slider {
-            background-color: var(--color-light-card);
-            border: 2px solid var(--color-light-border);
-            box-shadow: var(--glass-card-shadow);
-            bottom: 0;
-            cursor: pointer;
-            left: 0;
-            right: 0;
-            top: 0;
-            position: absolute;
-            transition: 0.4s;
-            border-radius: 24px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .slider:before {
-            background-color: var(--color-light-bg);
-            bottom: 4px;
-            content: "🌑";
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            height: 16px;
-            left: 4px;
-            position: absolute;
-            transition: 0.4s;
-            width: 16px;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: var(--color-cyan-accent);
-            border-color: #fff;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(24px);
-            content: "☀️";
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            background: linear-gradient(135deg, var(--color-light-card) 0%, rgba(0, 255, 255, 0.1) 100%);
-            padding: 4rem 0 6rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 2px solid var(--color-light-border);
-            backdrop-filter: blur(var(--glass-blur));
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 10% 20%, var(--color-cyan-accent) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
-            opacity: 0.1;
-            z-index: -1;
-            animation: pulse 6s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            from { transform: scale(0.9); opacity: 0.1; }
-            to { transform: scale(1.1); opacity: 0.2; }
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .hero p.subtitle {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        /* --- Main Content Sections --- */
-        main section {
-            padding: 3rem 0;
-            border-bottom: 1px solid var(--color-light-border);
-        }
-
-        .content-grid {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: 1fr;
-        }
-
-        /* Desktop two-column layout */
-        @media (min-width: 768px) {
-            .content-grid.two-col {
-                grid-template-columns: 1fr 1fr;
-            }
-            .content-grid.three-col {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        /* Liquid Glass Card Style */
-        .card {
-            background: var(--glass-bg-light);
-            border-radius: 20px; /* More rounded corners */
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--color-light-border); /* Highlight border */
-            padding: 1.5rem;
-            box-shadow: var(--glass-card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-8px); /* Deeper lift on hover */
-            box-shadow: 0 12px 25px rgba(0, 255, 255, 0.4);
-        }
-
-        /* --- Figures and Images --- */
-        figure img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            object-fit: cover;
-            width: 100%;
-            aspect-ratio: 16/9;
-            box-shadow: 0 4px 10px var(--color-shadow);
-            transition: transform 0.3s;
-        }
-        
-        figure img:hover {
-            transform: scale(1.02);
-            cursor: pointer;
-        }
-
-        /* --- Parts of a Speaker List --- */
-        .parts-list li {
-            background-color: var(--glass-bg-light);
-            margin-bottom: 0.5rem;
-            padding: 0.8rem;
-            border-left: 5px solid var(--color-cyan-accent);
-            border-radius: 8px;
-        }
-
-        /* --- Speaker Types Accordion (Interactivity) --- */
-        .accordion-header {
-            background-color: var(--color-light-card);
-            border: 1px solid var(--color-light-border);
-            border-radius: 10px;
-            margin-bottom: 5px;
-        }
-
-        .accordion-header:hover, .accordion-header.active {
-            background-color: var(--glass-bg-light);
-            color: var(--color-cyan-accent);
-            border-color: var(--color-cyan-accent);
-        }
-
-        .accordion-content {
-            background: linear-gradient(180deg, var(--glass-bg-light), rgba(255, 255, 255, 0.1));
-            border-radius: 0 0 10px 10px;
-            border-top: none;
-            backdrop-filter: blur(var(--glass-blur));
-        }
-
-        /* --- Comparison Table --- */
-        .comparison-table thead th {
-            background-color: var(--color-cyan-accent);
-            color: var(--color-light-text);
-        }
-
-        .comparison-table tbody tr:nth-child(even) {
-            background-color: rgba(0, 255, 255, 0.08); /* Subtle striping */
-        }
-        
-        /* --- Practical Tips and Cheat Sheet --- */
-        .cheat-sheet-card {
-            background: linear-gradient(145deg, var(--color-cyan-accent), #00cccc);
-            color: var(--color-light-text);
-            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.5);
-            border: 2px solid #fff;
-        }
-        
-        /* --- Modal for Fullscreen Image (Interactivity) --- */
-        .modal-content {
-            border: 5px solid var(--color-cyan-accent);
-        }
-
-        /* Print Styles */
-        @media print {
-            .cheat-sheet-card {
-                background: linear-gradient(145deg, #eee, #ddd); /* Revert for print */
-            }
-        }
-    </style>
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <div class="container navbar">
-            <span class="logo">🔊 SPEAKERS</span>
-            <nav class="nav-links">
-                <a href="#what-is-speaker">What is it?</a>
-                <a href="#speaker-types">Types</a>
-                <a href="#tips">Tips</a>
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" aria-label="Dark mode toggle">
-                        <span class="slider"></span>
-                    </label>
-                </div>
-            </nav>
-        </div>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Speakers: Sound Technology Explained</h1>
-                <p class="subtitle">From Tiny Tweeters to Mighty Subwoofers</p>
-                <p>Welcome to the guide on the fascinating devices that turn electrical signals into the music, voices, and sounds we enjoy every day. Understanding speakers is the first step to becoming an audio expert!</p>
-                <p class="credit">By **Biplov Devkota** &mdash; GRADE XI S6</p>
-            </div>
-        </section>
+<div class="container">
+    <h1>🎀 Happy Birthday Aashraa 🎂</h1>
+    <h2>(Nepali Date: 2066/11/16 💕)</h2>
 
-        <section id="what-is-speaker">
-            <div class="container content-grid two-col">
-                <div>
-                    <h2>What is a Speaker? 🔈</h2>
-                    <p>A speaker (or loudspeaker) is an **electroacoustic transducer**—a device that converts an electrical audio signal into corresponding sound waves. Think of it as the reverse of a microphone. The process is simple yet brilliant:</p>
-                    <ol>
-                        <li>An **audio signal** (electricity) from an amplifier is sent to the speaker.</li>
-                        <li>This electrical current flows through a **voice coil** (a wire wrapped around a cylinder).</li>
-                        <li>The voice coil is placed inside a **magnetic field** (created by a permanent magnet).</li>
-                        <li>When current flows, the voice coil becomes an electromagnet and is rapidly pushed and pulled by the permanent magnet (the **Lorentz force**).</li>
-                        <li>The voice coil is attached to a **cone** (diaphragm), which vibrates and pushes the surrounding air, creating the **sound waves** we hear.</li>
-                    </ol>
-                </div>
-                
-                <figure class="speaker-diagram">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Loudspeaker_working_principle_dynamic.svg" 
-                         alt="Labeled diagram showing the parts and working principle of a dynamic loudspeaker, including the cone, voice coil, and magnet." 
-                         loading="lazy" 
-                         width="600" 
-                         height="400" 
-                         onclick="openModal(this)">
-                    <figcaption>
-                        Diagram of a Dynamic Speaker's Mechanism. 
-                        <span class="attribution">(Source: Wikimedia Commons, CC BY-SA 3.0)</span>
-                    </figcaption>
-                </figure>
-            </div>
-        </section>
-        
-        <section id="speaker-parts">
-            <div class="container">
-                <h2>The 5 Main Parts of a Speaker</h2>
-                <p>Every speaker, from small earphones to large theater systems, contains these key components working together:</p>
-                <div class="content-grid three-col">
-                    <div class="card">
-                        <h3>Cone (Diaphragm)</h3>
-                        <p>The **most visible part**. It's usually made of paper, plastic, or metal. Its job is to move air. A bigger cone can move more air, producing **lower frequencies** (bass).</p>
-                    </div>
-                    <div class="card">
-                        <h3>Voice Coil</h3>
-                        <p>A coil of wire attached to the back of the cone. This is the part that **receives the electrical signal** and acts as an electromagnet. The signal's rapidly changing current causes it to constantly reverse its magnetic polarity.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Magnet (Permanent)</h3>
-                        <p>A fixed, strong magnet (usually ferrite or neodymium) that creates a constant magnetic field. The voice coil pushes and pulls against this field, creating the **movement** that generates sound.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Enclosure (Cabinet)</h3>
-                        <p>The box that holds the speaker components. Its primary job is to **prevent the back-wave** of sound (which is out of phase with the front-wave) from canceling out the front-wave, which would destroy the bass frequencies.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Crossover</h3>
-                        <p>An electrical circuit (or digital system) found in speakers with multiple drivers (like a woofer and a tweeter). It **splits the audio signal** into low, mid, and high frequencies and sends them only to the correct speaker part.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <p id="message"></p>
 
-        <section id="speaker-types">
-            <div class="container">
-                <h2>Speaker Types: Designed for Every Sound</h2>
-                <p>Speakers are specialized based on the range of sound frequencies they are best at producing or the way they are used:</p>
-                
-                <div id="speaker-accordion">
-                    
-                    <div class="accordion-item card">
-                        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="content-dynamic">
-                            <span>1. Dynamic Speakers (Drivers)</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content" id="content-dynamic">
-                            <div class="accordion-type-content">
-                                <div class="text-content">
-                                    <p>This is the **most common** type of driver and is what's explained in the "How it Works" section. They are versatile and can be designed for full-range sound or specialized for specific frequency ranges (like woofers and tweeters).</p>
-                                    <p><strong>Key Feature:</strong> Uses the voice coil/magnet principle to move a diaphragm.</p>
-                                </div>
-                                <figure>
-                                    <img src="https://images.unsplash.com/photo-1549487928-87720993172e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                                         alt="A close-up view of a standard speaker driver cone and suspension." 
-                                         loading="lazy" 
-                                         width="800" 
-                                         height="450" 
-                                         onclick="openModal(this)">
-                                    <figcaption>
-                                        A basic driver cone. 
-                                        <span class="attribution">(Source: Unsplash / Jeremy Lishner)</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
+    <button onclick="surprise()">Click for Cute Surprise 💝</button>
+</div>
 
-                    <div class="accordion-item card">
-                        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="content-tweeter">
-                            <span>2. Tweeters (High Frequencies)</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content" id="content-tweeter">
-                            <div class="accordion-type-content">
-                                <div class="text-content">
-                                    <p>Tweeters are small drivers designed to reproduce **high-frequency sounds** (typically above 2,000 Hz), like cymbals, voices, and string harmonics. They use small, light cones or domes (often silk or metal) for quick, precise movement.</p>
-                                    <p><strong>Key Feature:</strong> Small size, focus on detail and treble.</p>
-                                </div>
-                                <figure>
-                                    <img src="https://images.unsplash.com/photo-1627843460980-877478065460?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                                         alt="A close-up image of a small, dome-shaped tweeter." 
-                                         loading="lazy" 
-                                         width="800" 
-                                         height="450" 
-                                         onclick="openModal(this)">
-                                    <figcaption>
-                                        Small dome tweeter. 
-                                        <span class="attribution">(Source: Unsplash / Midas)</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item card">
-                        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="content-woofer">
-                            <span>3. Woofers (Low/Mid Frequencies)</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content" id="content-woofer">
-                            <div class="accordion-type-content">
-                                <div class="text-content">
-                                    <p>Woofers handle **low-to-mid frequency sounds** (typically 40 Hz to 2,000 Hz), which provide the warmth and body of music. They have larger, heavier cones (6 inches to 12 inches) to push more air and create the necessary sound pressure for bass.</p>
-                                    <p><strong>Key Feature:</strong> Large cone diameter, focus on bass and midrange.</p>
-                                </div>
-                                <figure>
-                                    <img src="https://images.pexels.com/photos/1792942/pexels-photo-1792942.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&dpr=2" 
-                                         alt="A close-up of a large black speaker cone, typical of a woofer." 
-                                         loading="lazy" 
-                                         width="800" 
-                                         height="450" 
-                                         onclick="openModal(this)">
-                                    <figcaption>
-                                        A powerful woofer. 
-                                        <span class="attribution">(Source: Pexels / Daria Shevtsova)</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
+<script>
+const text = "Dear Aashraa 💖 You are like sunshine in my life ☀️ Your smile makes everything brighter ✨ I wish your birthday is as sweet and beautiful as you are 🌸💕";
+let i = 0;
 
-                    <div class="accordion-item card">
-                        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="content-subwoofer">
-                            <span>4. Subwoofers (Very Low Frequencies)</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content" id="content-subwoofer">
-                            <div class="accordion-type-content">
-                                <div class="text-content">
-                                    <p>A specialized type of woofer, subwoofers are dedicated to the **very lowest frequencies** (typically below 80 Hz), which you feel more than you hear. They are essential for deep bass in movies and bass-heavy music.</p>
-                                    <p><strong>Key Feature:</strong> Very large cones (often 10-18 inches), housed in their own large enclosure, often **active** (with a built-in amplifier).</p>
-                                </div>
-                                <figure>
-                                    <img src="https://images.unsplash.com/photo-1628105658639-65b4c100e473?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                                         alt="A large, square black subwoofer in a room." 
-                                         loading="lazy" 
-                                         width="800" 
-                                         height="450" 
-                                         onclick="openModal(this)">
-                                    <figcaption>
-                                        A large home theater subwoofer. 
-                                        <span class="attribution">(Source: Unsplash / Mattia Faloretti)</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("message").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+    }
+}
 
-                    <div class="accordion-item card">
-                        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="content-bookshelf">
-                            <span>5. Bookshelf Speakers</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content" id="content-bookshelf">
-                            <div class="accordion-type-content">
-                                <div class="text-content">
-                                    <p>These are **compact** speakers designed to sit on a shelf, desk, or stand. They typically have two drivers: a woofer (for bass/midrange) and a tweeter. They offer excellent stereo imaging and are perfect for smaller rooms or near-field listening.</p>
-                                    <p><strong>Key Feature:</strong> Small size, two-way design, requires a separate amplifier (passive) or has one built-in (active).</p>
-                                </div>
-                                <figure>
-                                    <img src="https://images.unsplash.com/photo-1594326531589-980757a7962d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                                         alt="A pair of wooden bookshelf speakers on a desk." 
-                                         loading="lazy" 
-                                         width="800" 
-                                         height="450" 
-                                         onclick="openModal(this)">
-                                    <figcaption>
-                                        Classic wooden bookshelf speakers. 
-                                        <span class="attribution">(Source: Unsplash / K. B.)</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item card">
-                        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="content-tower">
-                            <span>6. Floorstanding / Tower Speakers</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content" id="content-tower">
-                            <div class="accordion-type-content">
-                                <div class="text-content">
-                                    <p>Tall, slender speakers that rest directly on the floor. Their large cabinets allow them to house multiple drivers (often three-way: tweeter, midrange, and woofer) for **full-range, powerful sound** without needing a separate subwoofer. Ideal for large living rooms.</p>
-                                    <p><strong>Key Feature:</strong> Tall, large enclosure, multiple drivers, excellent bass output.</p>
-                                </div>
-                                <figure>
-                                    <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&dpr=2" 
-                                         alt="A pair of tall, modern floorstanding speakers in a living room." 
-                                         loading="lazy" 
-                                         width="800" 
-                                         height="450" 
-                                         onclick="openModal(this)">
-                                    <figcaption>
-                                        Tower speakers for a home theater setup. 
-                                        <span class="attribution">(Source: Pexels / Kostiantyn Li)</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item card">
-                        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="content-monitor">
-                            <span>7. Studio Monitors</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content" id="content-monitor">
-                            <div class="accordion-type-content">
-                                <div class="text-content">
-                                    <p>Speakers designed for professional audio mixing and mastering. They are built to have an **extremely flat frequency response**, meaning they reproduce sound exactly as recorded, without boosting bass or treble. They show the "truth" of the audio.</p>
-                                    <p><strong>Key Feature:</strong> Flat frequency response, usually **active** (self-powered), used by musicians and producers.</p>
-                                </div>
-                                <figure>
-                                    <img src="https://images.unsplash.com/photo-1542496658-4abf43e59535?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                                         alt="A pair of compact studio monitor speakers on stands in a professional setting." 
-                                         loading="lazy" 
-                                         width="800" 
-                                         height="450" 
-                                         onclick="openModal(this)">
-                                    <figcaption>
-                                        Studio monitors used for music production. 
-                                        <span class="attribution">(Source: Unsplash / Martin Sanchez)</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item card">
-                        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="content-wireless">
-                            <span>8. Bluetooth / Wireless Speakers</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content" id="content-wireless">
-                            <div class="accordion-type-content">
-                                <div class="text-content">
-                                    <p>These are defined by their **connection method**, not their driver type. They contain their own amplifier and battery, and receive audio via **Bluetooth** or Wi-Fi. They are the ultimate portable and convenient option for casual listening.</p>
-                                    <p><strong>Key Feature:</strong> **Active** (self-powered), battery-operated, portable, easy connection to phones/laptops.</p>
-                                </div>
-                                <figure>
-                                    <img src="https://images.unsplash.com/photo-1546435602-53531b463259?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                                         alt="A small, fabric-covered portable Bluetooth speaker." 
-                                         loading="lazy" 
-                                         width="800" 
-                                         height="450" 
-                                         onclick="openModal(this)">
-                                    <figcaption>
-                                        A modern, portable Bluetooth speaker. 
-                                        <span class="attribution">(Source: Unsplash / Mattia Faloretti)</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item card">
-                        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="content-soundbar">
-                            <span>9. Soundbars</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content" id="content-soundbar">
-                            <div class="accordion-type-content">
-                                <div class="text-content">
-                                    <p>A single, long, horizontal speaker enclosure designed to sit below a TV. It contains multiple drivers and aims to **recreate a multi-speaker surround sound experience** from a single unit. They are a simple upgrade over built-in TV speakers.</p>
-                                    <p><strong>Key Feature:</strong> All-in-one design, simulates surround sound, primarily for TV/movie viewing.</p>
-                                </div>
-                                <figure>
-                                    <img src="https://images.unsplash.com/photo-1616429532585-783a005086ab?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                                         alt="A long, black soundbar sitting on a TV stand." 
-                                         loading="lazy" 
-                                         width="800" 
-                                         height="450" 
-                                         onclick="openModal(this)">
-                                    <figcaption>
-                                        A sleek soundbar setup. 
-                                        <span class="attribution">(Source: Unsplash / Karolina Grabowska)</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
+typeWriter();
 
-                </div>
-            </div>
-        </section>
+function surprise() {
+    alert("I might be shy... but today I just want to say 💕 You are really special to me 🥺💖");
+}
 
-        <section id="comparison">
-            <div class="container">
-                <h2>Quick Speaker Comparison</h2>
-                <div class="card">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Speaker Type</th>
-                                <th>Frequency Focus</th>
-                                <th>Typical Size</th>
-                                <th>Common Usage</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>**Tweeter**</td>
-                                <td>Highs (2kHz+)</td>
-                                <td>< 1 inch (dome)</td>
-                                <td>Adding detail/sparkle to music</td>
-                            </tr>
-                            <tr>
-                                <td>**Woofer**</td>
-                                <td>Mids/Lows (40Hz–2kHz)</td>
-                                <td>6–12 inches</td>
-                                <td>Main music range, bass foundation</td>
-                            </tr>
-                            <tr>
-                                <td>**Subwoofer**</td>
-                                <td>Very Lows (< 80Hz)</td>
-                                <td>10–18 inches</td>
-                                <td>Deep bass, cinematic effects, 'feeling' the music</td>
-                            </tr>
-                            <tr>
-                                <td>**Bookshelf**</td>
-                                <td>Full Range (with limitations)</td>
-                                <td>Medium (fits on a shelf)</td>
-                                <td>Desktop setups, small/medium room music</td>
-                            </tr>
-                            <tr>
-                                <td>**Tower/Floorstanding**</td>
-                                <td>True Full Range</td>
-                                <td>Tall (floor to hip/chest)</td>
-                                <td>Large rooms, dedicated hi-fi systems</td>
-                            </tr>
-                            <tr>
-                                <td>**Soundbar**</td>
-                                <td>Mids/Highs (simulated lows)</td>
-                                <td>Long, thin bar</td>
-                                <td>TV sound improvement, simple home theater</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
 
-        <section id="tips">
-            <div class="container content-grid two-col">
-                <div>
-                    <h2>Practical Tips for Audio Lovers</h2>
-                    <ul class="tips-list">
-                        <li>**Placement is Key:** For stereo speakers (like bookshelf or tower), place them in an equilateral triangle with your listening position for the best "soundstage." Keep them away from walls if they are ported in the back to avoid boomy bass.</li>
-                        <li>**Active vs. Passive:**
-                            <ul>
-                                <li>**Passive Speakers** require a separate amplifier/receiver to power them. This gives you more flexibility to upgrade components.</li>
-                                <li>**Active Speakers** (like studio monitors or most Bluetooth speakers) have the amplifier built-in. This is simpler, requires fewer cables, and is easier for beginners.</li>
-                            </ul>
-                        </li>
-                        <li>**Safe Volume:** If you have to shout to be heard over your music, it's too loud and can cause permanent hearing damage. Use the **60/60 Rule** (listen at 60% volume for no more than 60 minutes per day) as a simple guideline.</li>
-                        <li>**Buying Suggestions for Students:**
-                            <p>Focus on **active bookshelf speakers** or a good **portable Bluetooth speaker**. They are affordable, don't require extra components, and offer great sound for small rooms or travel.</p>
-                        </li>
-                    </ul>
-                </div>
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
 
-                <div class="cheat-sheet-card">
-                    <h3>Mini Speaker Cheat-Sheet 📝</h3>
-                    <p><strong>Quick Guide for Your Audio Journey:</strong></p>
-                    <ul>
-                        <li>🔊 **Purpose:** Converts electrical signals to sound waves.</li>
-                        <li>⚙️ **Key Part:** Voice coil/Magnet creates cone movement.</li>
-                        <li>📏 **Tweeter:** Small, for crisp **Highs** (details).</li>
-                        <li>🥁 **Woofer:** Large, for rich **Lows** (bass/body).</li>
-                        <li>📦 **Enclosure:** Stops sound from cancelling itself out.</li>
-                        <li>🔌 **Passive:** Needs external Amplifier.</li>
-                        <li>🔋 **Active:** Has built-in Amplifier.</li>
-                    </ul>
-                    <p style="text-align: center; margin-top: 10px; font-weight: bold; font-size: 1.1em;">Listen Smart, Listen Safe!</p>
-                </div>
-            </div>
-        </section>
-    </main>
+setInterval(createHeart, 300);
+</script>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Speakers: Sound Technology Explained. All rights reserved.</p>
-            <p>Project by **Biplov Devkota** &mdash; GRADE XI S6</p>
-            <p>Image Sources: All images sourced from Unsplash, Pexels, and Wikimedia Commons under free/open licenses. Full attributions are listed in the captions above.</p>
-        </div>
-    </footer>
-
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage" alt="Fullscreen view of the speaker component image">
-        <div id="modalCaption" class="modal-caption"></div>
-    </div>
-
-    <script>
-        // --- 1. Dark/Light Mode Theme Toggle ---
-
-        const checkbox = document.getElementById('checkbox');
-        const body = document.body;
-        const storageKey = 'themePreference';
-
-        // Function to apply the saved theme or default to light
-        function applyTheme(theme) {
-            if (theme === 'dark') {
-                body.classList.add('dark-mode');
-                checkbox.checked = true;
-            } else {
-                body.classList.remove('dark-mode');
-                checkbox.checked = false;
-            }
-        }
-
-        // Load theme preference on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem(storageKey) || 'light';
-            applyTheme(savedTheme);
-            
-            // --- 3. Lazy Load Images on Load ---
-            // A simple polyfill for older browsers or if 'loading="lazy"' fails
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-            lazyImages.forEach(img => {
-                if (!('loading' in HTMLImageElement.prototype)) {
-                    // Fallback for browsers not supporting the lazy attribute
-                    img.src = img.dataset.src; 
-                }
-            });
-        });
-
-        // Event listener for theme toggle
-        checkbox.addEventListener('change', () => {
-            if (checkbox.checked) {
-                body.classList.add('dark-mode');
-                localStorage.setItem(storageKey, 'dark');
-            } else {
-                body.classList.remove('dark-mode');
-                localStorage.setItem(storageKey, 'light');
-            }
-        });
-
-        // --- 2. Speaker Types Accordion System ---
-        
-        const accordion = document.getElementById('speaker-accordion');
-        
-        // Function to toggle an accordion item
-        function toggleAccordion(header) {
-            const content = header.nextElementSibling;
-            const isActive = header.classList.contains('active');
-
-            // Close all other open items
-            document.querySelectorAll('.accordion-header.active').forEach(openHeader => {
-                if (openHeader !== header) {
-                    openHeader.classList.remove('active');
-                    openHeader.nextElementSibling.classList.remove('open');
-                }
-            });
-
-            // Toggle the clicked item
-            if (!isActive) {
-                header.classList.add('active');
-                content.classList.add('open');
-            } else {
-                header.classList.remove('active');
-                content.classList.remove('open');
-            }
-        }
-
-        // Add event listeners for both click and keyboard (Enter/Space)
-        if (accordion) {
-            accordion.querySelectorAll('.accordion-header').forEach(header => {
-                // Click handler
-                header.addEventListener('click', () => {
-                    toggleAccordion(header);
-                });
-                
-                // Keyboard handler for accessibility
-                header.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault(); // Prevent default scroll for spacebar
-                        toggleAccordion(header);
-                    }
-                });
-            });
-        }
-
-
-        // --- 3. Image Fullscreen Modal ---
-
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const modalCaption = document.getElementById('modalCaption');
-
-        // Function to open the modal
-        function openModal(imageElement) {
-            modal.style.display = "block";
-            modalImg.src = imageElement.src;
-            modalImg.alt = imageElement.alt;
-            
-            // Get caption from the sibling figcaption element
-            const figCaption = imageElement.nextElementSibling;
-            if (figCaption) {
-                modalCaption.innerHTML = figCaption.innerHTML;
-            } else {
-                modalCaption.innerHTML = imageElement.alt;
-            }
-        }
-
-        // Function to close the modal
-        function closeModal() {
-            modal.style.display = "none";
-        }
-
-        // Close the modal if the user clicks anywhere outside of the image
-        modal.onclick = function(event) {
-            // Check if the click occurred directly on the modal background
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-    </script>
 </body>
 </html>
