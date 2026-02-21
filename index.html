@@ -52,7 +52,7 @@ position:absolute;
 inset:0;
 transform:
 rotateY(calc((var(--position) - 1)*(360/var(--quantity))*1deg))
-translateZ(350px);
+translateZ(320px);
 }
 
 .slider .item img{
@@ -79,8 +79,8 @@ color:white;
 
 .content h1{
 font-family:'ICA Rubrik',sans-serif;
-font-size:6em;
-color:rgba(255,255,255,0.8);
+font-size:5em;
+color:rgba(255,255,255,0.9);
 text-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
@@ -163,7 +163,8 @@ cursor:pointer;
 
 <div class="banner">
 
-<div class="slider" style="--quantity:10">
+<!-- ONLY 7 IMAGES -->
+<div class="slider" style="--quantity:7">
 <div class="item" style="--position:1"><img src="1.jpeg"></div>
 <div class="item" style="--position:2"><img src="2.jpeg"></div>
 <div class="item" style="--position:3"><img src="3.jpeg"></div>
@@ -171,9 +172,6 @@ cursor:pointer;
 <div class="item" style="--position:5"><img src="5.jpeg"></div>
 <div class="item" style="--position:6"><img src="6.jpeg"></div>
 <div class="item" style="--position:7"><img src="7.jpeg"></div>
-<div class="item" style="--position:8"><img src="8.jpeg"></div>
-<div class="item" style="--position:9"><img src="9.jpeg"></div>
-<div class="item" style="--position:10"><img src="10.jpeg"></div>
 </div>
 
 <div class="content">
@@ -216,7 +214,7 @@ closeBtn.onclick=()=>modal.style.display="none";
 
 /* Surprise */
 function surprise(){
-alert("I might be shy… but today I want to say 💕 You are really special to me 🥺💖");
+alert("You are really special to me 💕 Happy Birthday Aashraa 🎂✨");
 }
 
 /* Floating Hearts */
